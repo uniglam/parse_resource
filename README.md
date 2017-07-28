@@ -1,11 +1,7 @@
 ParseResource 
 =============
 
-### Maintainer needed
-
-Unfortunately, I haven't been able to give this library the time it deserves. If you'd like to be a maintainer, please let me know.
-
-[![Build Status](https://secure.travis-ci.org/adelevie/parse_resource.png)](http://travis-ci.org/adelevie/parse_resource) [![Code Climate](https://codeclimate.com/github/adelevie/parse_resource.png)](https://codeclimate.com/github/adelevie/parse_resource)
+[![Build Status](https://secure.travis-ci.org/adelevie/parse_resource.png)](http://travis-ci.org/adelevie/parse_resource)
 
 
 ParseResource makes it easy to interact with Parse.com's REST API. It adheres to the ActiveRecord pattern. ParseResource is fully ActiveModel compliant, meaning you can use validations and Rails forms.
@@ -34,7 +30,7 @@ Include in your `Gemfile`:
 
 ```ruby
 gem "kaminari" # optional for pagination support
-gem "parse_resource", "~> 1.8.0"
+gem "parse_resource", "~> 1.7.2"
 ```
 
 Or just gem install:
@@ -58,13 +54,6 @@ test:
 production:
   app_id: 1234567890
   master_key: abcdefgh
-```
-
-If you keep `parse_resource.yml` in `.gitignore`, ParseResource will alternatively look for the api keys in environment variables. If using Heroku you can easily set your api keys in the Heroku environment using:
-
-```
-heroku config:set PARSE_RESOURCE_APPLICATION_ID=1234567890
-heroku config:set PARSE_RESOURCE_MASTER_KEY=abcdefgh
 ```
 
 You can create separate Parse databases if you want. If not, include the same info for each environment.
@@ -142,7 +131,6 @@ id = "DjiH4Qffke"
 p = Post.find(id) #simple find by id
 
 # ActiveRecord style find commands
-Post.find_by(:title => "Uncrunched") #=> A Post object
 Post.find_by_title("Uncrunched") #=> A Post object
 Post.find_all_by_author("Arrington") #=> An Array of Posts
 
@@ -315,10 +303,6 @@ posts.each do |post|
 	# because you used Post#include_object, calling post.title won't execute a new query
 	# this is similar to ActiveRecord's eager loading
 end
-
-# fetch users through a relation on posts named commenters
-post = Post.first
-users = User.related_to(post, :commenters)
 ```
 
 File Upload
@@ -326,7 +310,7 @@ File Upload
 ```ruby
   @post = Post.first()
   result = Post.upload(uploaded_file.tempfile, uploaded_file.original_filename, content_type: uploaded_file.content_type)
-  @post.thumbnail = {"name" => result["name"], "__type" => "File", "url" => result["url"]}
+  @post.thumbnail = {"name" => result["name"], "__type" => "File"}
 ```
 
 Custom Getters and Setters
@@ -379,6 +363,6 @@ Contributing to ParseResource
 Copyright
 ---------
 
-Copyright (c) 2013 Alan deLevie. See LICENSE.txt for
+Copyright (c) 2012 Alan deLevie. See LICENSE.txt for
 further details.
 

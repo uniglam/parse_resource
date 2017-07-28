@@ -5,6 +5,9 @@ group :development do
   gem "jeweler", "~> 1.6.4"
   # gem "rcov", ">= 0"
   gem "reek", "~> 1.2.8"
+  gem "rest-client"
+  gem "activesupport"
+  gem "activemodel"
   gem "vcr"
   gem "webmock"
   gem "turn" # Better output for Test::Unit
@@ -14,4 +17,4 @@ gem "rest-client"
 gem "activesupport"
 gem "activemodel"
 gem "json"
-gem "test-unit"
+
